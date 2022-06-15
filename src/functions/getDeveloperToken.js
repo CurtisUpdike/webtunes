@@ -1,9 +1,10 @@
-var jsonWebToken = require('jsonwebtoken');
+var jwt = require('jsonwebtoken');
 
-function parseKey(keyFromEnv) {
+function parseAuthKey(key) {
+	// netlify's env variables do not preserve newlines
 	const head = '-----BEGIN PRIVATE KEY-----';
 	const tail = '-----END PRIVATE KEY-----';
-	let body = keyFromEnv
+	const body = key
 		.replace(new RegExp(head), '')
 		.replace(new RegExp(tail), '')
 		.replace(/\s/g, '\n');
@@ -11,22 +12,22 @@ function parseKey(keyFromEnv) {
 }
 
 exports.handler = async () => {
-	let developerToken = jsonWebToken.sign(
+	const developerToken = jwt.sign(
 		{}, 
-		parseKey(process.env.APPLE_DEV_AUTH_KEY), 
+		parseAuthKey(process.env.AUTH_KEY), 
 		{
-			algorithm: "ES256",
-			expiresIn: "180d",
-			issuer: process.env.APPLE_DEV_TEAM_ID,
+			algorithm: "ES256", // only supported algorithm by MusicKit
+			expiresIn: "30d",
+			issuer: process.env.TEAM_ID,
 			header: {
 				alg: "ES256",
-				kid: process.env.APPLE_DEV_KEY_ID
+				kid: process.env.KEY_ID
 			}
 		}
 	);
 	
 	return {
 		statusCode: 200,
-		body: JSON.stringify({developerToken})
+		body: JSON.stringify({ developerToken })
 	};
 };
