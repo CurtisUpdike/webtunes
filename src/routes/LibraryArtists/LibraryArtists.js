@@ -9,15 +9,15 @@ function LibraryArtists() {
 	const [loading, setLoading] = useState(true);
 	const [selected, setSelected] = useState(null);
 	useEffect(() => {
-		music.api.library.artists({
-			limit: 50,
-			offset: artists.length
-		})
-			.then(res => res.length > 0
-				? setArtists([...artists, ...res])
-				: setLoading(false)
+		music.api.library
+			.artists({
+				limit: 50,
+				offset: artists.length,
+			})
+			.then((res) =>
+				res.length > 0 ? setArtists([...artists, ...res]) : setLoading(false)
 			)
-			.catch(e => console.error(e));
+			.catch((e) => console.error(e));
 	}, [artists]);
 
 	function handleClick(id) {
@@ -31,16 +31,12 @@ function LibraryArtists() {
 	return artists ? (
 		<div className={styles.container}>
 			<div className={styles.artists}>
-				{artists.map(item => (
+				{artists.map((item) => (
 					<a
 						href={`#/${item.id}`}
-						key={item.id} 
-						className={item.id === selected
-							? styles.selected
-							: styles.artist
-						}
-						onClick={() => handleClick(item.id)}
-					>
+						key={item.id}
+						className={item.id === selected ? styles.selected : styles.artist}
+						onClick={() => handleClick(item.id)}>
 						{item.attributes.name}
 					</a>
 				))}
@@ -53,12 +49,11 @@ function LibraryArtists() {
 	);
 }
 
-function ArtistAlbums({id}) {
+function ArtistAlbums({ id }) {
 	const [content, setContent] = useState(null);
 	useEffect(() => {
 		setContent(null);
-		music.api.library.artistRelationship(id)
-			.then(res => setContent(res));
+		music.api.library.artistRelationship(id).then((res) => setContent(res));
 	}, [id]);
 
 	return content ? (

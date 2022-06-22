@@ -1,0 +1,28 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	/* margin-bottom: 12px; */
+	width: 224px;
+}
+
+.container button:hover {
+	color: var(--color-font-accent);
+}
+
+.container button:disabled svg {
+	color: var(--color-font-muted);
+}
+
+.play,
+.pause {
+	font-size: 1.5rem;
+}
+
+.skip {
+	font-size: 1.25rem;
+}
+
+.shuffle,
+.repeat {
+	font-size: 0.9rem;
+}

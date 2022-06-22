@@ -1,69 +1,29 @@
 .player {
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  display: grid;
-  grid-template-areas: "nowPlaying controls header";
-  grid-template-columns: repeat(3, 33%);
-  grid-area: player;
-  justify-content: center;
+	align-items: center;
+	background-color: var(--color-background-secondary);
+	border-top: 1px solid var(--color-border-player);
+	display: flex;
+	grid-area: player;
+	grid-template-columns: 1fr;
+	height: 91px;
+	overflow: hidden;
+	justify-content: space-between;
+	padding: 0 2rem;
+	transition: height 0.2s ease-out;
+	width: 100%;
 }
 
-.nowPlaying {
-  align-items: center;
-  display: flex;
-  grid-area: nowPlaying;
+.side {
+	min-width: 180px;
+	width: 30%;
 }
 
-.artwork {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  height: 45px;
-  margin: 0 10px;
-  width: 45px;
-}
-
-.albumPlaceholder {
-  composes: artwork;
-  background: center / contain url('../../assets/album.jpeg');
-}
-
-.text {
-  width: 100%;
-}
-
-.text p {
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.name {
-  font-size: 15px;
-}
-
-.albumInfo {
-  color: var(--light-font-color);
-  font-size: 12px;
-}
-
-.controls {
-  display: flex;
-  grid-area: controls;
-  justify-content: center;
-}
-
-.header {
-  align-items: center;
-  display: flex;
-  color: var(--base-font-color);
-  grid-area: header;
-  justify-content: flex-end;
-  padding: 0 16px;
-}
-
-.title {
-  font-size: 24px;
-  margin: 0;
-  padding: 0 16px;
+.center {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 3.5rem;
+	width: 40%;
+	max-width: 722px;
 }

@@ -1,52 +1,52 @@
 .container {
-  position: relative;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  flex: 1;
-  flex-shrink: 0;
+	position: relative;
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	flex: 1;
+	flex-shrink: 0;
 }
 
 .artists {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-right: 1px solid var(--border-color);
-  max-height: calc(100vh - 60px);
-  position: relative;
-  overflow: auto;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border-right: 1px solid var(--border-color);
+	max-height: calc(100vh - 60px);
+	position: relative;
+	overflow: auto;
 }
 
 .artist {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--dark-font-color);
-  min-height: 50px;
-  padding-left: 10px;
-  text-decoration: none;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--border-color);
+	color: var(--dark-font-color);
+	min-height: 50px;
+	padding-left: 10px;
+	text-decoration: none;
 }
 
 .artist:hover {
-  color: var(--brand-color);
-  cursor: pointer;
-  background-color: var(--border-color);
+	color: var(--brand-color);
+	cursor: pointer;
+	background-color: var(--border-color);
 }
 
 .selected {
-  display: flex;
-  align-items: center;
-  background-color: var(--brand-color);
-  border-bottom: 1px solid var(--border-color);
-  color: white;
-  min-height: 50px;
-  padding-left: 10px;
-  text-decoration: none;
+	display: flex;
+	align-items: center;
+	background-color: var(--brand-color);
+	border-bottom: 1px solid var(--border-color);
+	color: white;
+	min-height: 50px;
+	padding-left: 10px;
+	text-decoration: none;
 }
 
 .albums {
-  max-height: calc(100vh - 60px);
-  padding: 12px 0;
-  position: relative;
-  flex: 1;
-  overflow: auto;
+	max-height: calc(100vh - 60px);
+	padding: 12px 0;
+	position: relative;
+	flex: 1;
+	overflow: auto;
 }

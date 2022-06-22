@@ -1,13 +1,62 @@
-.collection {
-  display: grid;
-  grid-auto-flow: column;  
-  grid-column-gap: 30px;
-  justify-content: start;
-  overflow: scroll;
-  padding: 16px 0 24px var(--x-margin);
+.container {
+	margin-top: 4rem;
+}
+
+.header {
+	border-bottom: 1px solid var(--color-border-main);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.2rem;
+}
+
+.title {
+	margin: 0 0 0.5rem 0;
+	color: var(--color-font-accent);
+	font-size: 1.125rem;
+}
+
+.controls {
+	color: var(--color-font-base);
+	display: flex;
+}
+
+.controls button {
+	padding: 0 0.5rem 0 0.5rem;
+}
+
+.controls button:hover {
+	color: var(--color-font-accent);
+}
+
+button:disabled,
+button[disabled],
+button:disabled:hover,
+button[disabled]:hover {
+	color: var(--color-border-main);
+}
+
+.content-container {
+	overflow: hidden;
+}
+
+.content {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: start;
+	transition: transform 0.5s;
+}
+
+.oldCollection {
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: 30px;
+	justify-content: start;
+	overflow: scroll;
+	padding: 16px 0 24px var(--x-margin);
 }
 
 /* hack for padding with overflow */
-.collection > *:last-child {
-  padding-right: var(--x-margin);
+.oldCollection > *:last-child {
+	padding-right: var(--x-margin);
 }

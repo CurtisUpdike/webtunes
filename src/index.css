@@ -1,35 +1,67 @@
 :root {
-  --base-font-color: #333;
-  --dark-font-color: #6a6a6a;
-  --medium-font-color: #878786;
-  --light-font-color: #8e8e93;
-  --brand-color: #007EE6;
-  --border-color: #e5e5e5;
-  --x-margin: 36px;
-  --y-margin: 24px;
+	--color-font-base: #b3b3b3;
+	--color-font-accent: #fff;
+	--color-font-muted: #535353;
+	--color-background-main: #181818;
+	--color-background-primary: #181818;
+	--color-background-secondary: #282828;
+	--color-background-sidebar: #111;
+	--color-brand-primary: #ff2f56;
+	--color-border-main: #282828;
+	--color-border-player: #000;
+	--color-border-sidebar: #111;
+}
+
+/* light theme */
+/* @media (prefers-color-scheme: light) {
+	:root {
+		--color-font-base: #8e8e93;
+		--color-font-accent: #333;
+		--color-font-muted: #b3b3b3;
+		--color-background-main: #fff;
+		--color-background-secondary: #f0f0f0;
+		--color-background-sidebar: #f7f7f7;
+		--color-player-border: #e5e5e5;
+		--color-brand-primary: #007ee6;
+		--color-disabled: #ddd;
+		--color-border-main: rgba(0, 0, 0, 0.07);
+		--color-border-sidebar: rgba(0, 0, 0, 0.1);
+	}
+} */
+
+/* legacy */
+:root {
+	--base-font-color: var(--color-font-accent);
+	--dark-font-color: #6a6a6a;
+	--medium-font-color: #878786;
+	--light-font-color: var(--color-font-base);
+	--brand-color: var(--color-brand-primary);
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  color: var(--base-font-color);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  font-weight: 500;
-  height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	background-color: var(--color-background-primary);
+	margin: 0;
+	color: var(--color-font-base);
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	font-weight: 500;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  outline: none;
-  background-color: transparent;
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	outline: none;
+	background-color: transparent;
 }

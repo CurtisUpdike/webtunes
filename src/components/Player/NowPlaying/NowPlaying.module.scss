@@ -1,0 +1,53 @@
+.container {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: flex-start;
+}
+
+.artwork {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	height: 56px;
+	width: 56px;
+}
+
+@mixin ellipses-one-line {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.info {
+	@include ellipses-one-line;
+	margin: 0 14px;
+}
+
+@mixin text {
+	@include ellipses-one-line;
+	display: block;
+	letter-spacing: 0.015em;
+	text-align: left;
+	text-decoration: none;
+}
+
+.title {
+	@include text;
+	font-size: 14px;
+	line-height: 20px;
+	color: var(--color-font-accent);
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.artist {
+	@include text;
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--color-font-main);
+	padding: 0;
+	margin: 0;
+	&:hover {
+		cursor: default;
+	}
+}

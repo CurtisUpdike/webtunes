@@ -1,0 +1,12 @@
+.container {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.time {
+	font-size: 11px;
+	text-align: center;
+	width: 50px;
+}

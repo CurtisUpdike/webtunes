@@ -1,13 +1,13 @@
 .name {
-  border-bottom: 1px solid var(--border-color);
-  margin: var(--y-margin) var(--x-margin);
-  padding-bottom: 12px;
+	border-bottom: 1px solid var(--border-color);
+	margin: var(--y-margin) var(--x-margin);
+	padding-bottom: 12px;
 }
 
 .artists {
-  justify-items: center;
-  display: grid;
-  grid-row-gap: 24px;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  margin: 0 48px;
+	justify-items: center;
+	display: grid;
+	grid-row-gap: 24px;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	margin: 0 48px;
 }

@@ -1,97 +1,97 @@
 .album {
-  display: flex;
-  justify-content: center;
-  min-width: 830px;
+	display: flex;
+	justify-content: center;
+	min-width: 830px;
 }
 
 .left {
-  margin: var(--y-margin) var(--x-margin);
-  width: 322px;
+	margin: var(--y-margin) var(--x-margin);
+	width: 322px;
 }
 
 .artwork {
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
 }
 
 .info {
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  margin: 0 4px;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	justify-content: space-between;
+	margin: 0 4px;
 }
 
 .trackCount {
-  color: var(--light-font-color);
-  font-size: 13px;
-  margin: 10px 0;
+	color: var(--light-font-color);
+	font-size: 13px;
+	margin: 10px 0;
 }
 
 .playButton {
-  height: 32px;
-  position: relative;
-  width: 32px;
+	height: 32px;
+	position: relative;
+	width: 32px;
 }
 
 .playButton::before {
-  color: var(--brand-color);
-  content: 'Play';
-  position: absolute;
-  font-size: 13px;
-  right: 30px;
-  top: 9px;
+	color: var(--brand-color);
+	content: 'Play';
+	position: absolute;
+	font-size: 13px;
+	right: 30px;
+	top: 9px;
 }
 
 .notes h3 {
-  color: var(base-font-color);
-  font-size: 16px;
-  margin: 20px 0 0;
+	color: var(base-font-color);
+	font-size: 16px;
+	margin: 20px 0 0;
 }
 
 .notes p {
-  color: var(base-font-color);
-  font-size: 13px;
-  margin-top: 6px;
+	color: var(base-font-color);
+	font-size: 13px;
+	margin-top: 6px;
 }
 
 .right {
-  flex: 1;
-  margin: var(--y-margin) var(--x-margin);
-  min-width: 373px;
-  max-width: 624px;
+	flex: 1;
+	margin: var(--y-margin) var(--x-margin);
+	min-width: 373px;
+	max-width: 624px;
 }
 
 .name {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 6px 0 2px;
-  padding: 0;
+	font-size: 24px;
+	font-weight: 700;
+	margin: 6px 0 2px;
+	padding: 0;
 }
 
 .artist {
-  color: var(--brand-color);
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0;
-  text-decoration: none;
+	color: var(--brand-color);
+	font-size: 18px;
+	font-weight: 400;
+	margin: 0;
+	text-decoration: none;
 }
 
 .artist:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .genre {
-  color: var(--light-font-color);
-  font-size: 13px;
-  margin: 4px 0 24px 0;
+	color: var(--light-font-color);
+	font-size: 13px;
+	margin: 4px 0 24px 0;
 }
 
 .copyright {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .copyright p {
-  color: var(--light-font-color);
-  font-size: 13px;
-  margin: 2px 0;
+	color: var(--light-font-color);
+	font-size: 13px;
+	margin: 2px 0;
 }

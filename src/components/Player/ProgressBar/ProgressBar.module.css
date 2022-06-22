@@ -1,0 +1,26 @@
+.container {
+	align-items: center;
+	display: flex;
+	height: 12px;
+	width: 100%;
+}
+
+.container:hover .bar .fill {
+	background-color: var(--color-brand-primary);
+}
+
+.bar {
+	background-color: var(--color-font-muted);
+	border-radius: 2px;
+	height: 4px;
+	margin-top: 1px;
+	overflow: hidden;
+	width: 100%;
+}
+
+.fill {
+	background-color: var(--color-font-base);
+	border-radius: 2px;
+	height: 4px;
+	width: 100%;
+}

@@ -1,73 +1,73 @@
 .tracklist {
-  margin-bottom: 15px;
-  padding-left: 60px;
+	margin-bottom: 15px;
+	padding-left: 60px;
 }
 
 .track {
-  align-items: center;
-  border-top: 1px solid var(--border-color);
-  color: var(--light-font-color);
-  display: flex;
-  font-size: 13px;
-  font-weight: 400;
-  height: 55px;
-  position: relative;
+	align-items: center;
+	border-top: 1px solid var(--border-color);
+	color: var(--light-font-color);
+	display: flex;
+	font-size: 13px;
+	font-weight: 400;
+	height: 55px;
+	position: relative;
 }
 
 .album {
-  position: absolute;
-  height: 45px;
-  left: -60px;
-  width: 45px;
+	position: absolute;
+	height: 45px;
+	left: -60px;
+	width: 45px;
 }
 
 .artwork {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
 }
 
 .track:hover .playButton {
-  opacity: 100;
+	opacity: 100;
 }
 
 .playButton {
-  position: absolute;
-  left: 5px;
-  bottom: 4px;
-  opacity: 0;
-  -webkit-transition: opacity 0.1s ease-in;
-  transition: opacity 0.1s ease-in;
-  width: 36px;
-  height: 36px;
+	position: absolute;
+	left: 5px;
+	bottom: 4px;
+	opacity: 0;
+	-webkit-transition: opacity 0.1s ease-in;
+	transition: opacity 0.1s ease-in;
+	width: 36px;
+	height: 36px;
 }
 
 .text {
-  align-items: center;
-  display: flex;
-  width: 100%;
+	align-items: center;
+	display: flex;
+	width: 100%;
 }
 
 .info {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .info p {
-  margin: 0;
+	margin: 0;
 }
 
 .name {
-  font-size: 13px;
-  box-sizing: border-box;
-  color: var(--base-font-color);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	font-size: 13px;
+	box-sizing: border-box;
+	color: var(--base-font-color);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .duration {
-  align-self: center;
-  padding-left: 28px;
+	align-self: center;
+	padding-left: 28px;
 }
