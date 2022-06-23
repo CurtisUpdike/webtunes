@@ -1,10 +1,9 @@
 import React from 'react';
-import formatMediaTime from '../../utils/formatMediaTime'
+import formatMediaTime from '../../utils/formatMediaTime';
 import styles from './Tracklist.module.scss';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function Tracklist({ songs }) {
-
 	return (
 		<div className={styles.tracklist}>
 			<header>
@@ -17,7 +16,9 @@ function Tracklist({ songs }) {
 				</span>
 			</header>
 			<ol>
-				{songs.map((song, key) => <Track key={key} song={song} />)}
+				{songs.map((song, key) => (
+					<Track key={key} song={song} />
+				))}
 			</ol>
 		</div>
 	);
@@ -48,8 +49,8 @@ function Track({ song }) {
 			albumName: album,
 			artistName: artist,
 			durationInMillis,
-			playParams
-		}
+			playParams,
+		},
 	} = song;
 	let duration = Math.ceil(durationInMillis / 1000);
 
@@ -64,16 +65,14 @@ function Track({ song }) {
 	return (
 		<li onDoubleClick={play} className={styles.track}>
 			<span onClick={play}>
-				<Icon icon={['far', 'play-circle']} className={styles.play} />
+				<Icon icon={['fa', 'play']} className={styles.play} />
 			</span>
 			<span>{title}</span>
 			<span>{artist}</span>
 			<span>{album}</span>
-			<span className={styles.duration}>
-				{formatMediaTime(duration)}
-			</span>
+			<span className={styles.duration}>{formatMediaTime(duration)}</span>
 		</li>
-	)
+	);
 
 	// return (
 	// 	<tr onDoubleClick={play} className={styles.track}>
