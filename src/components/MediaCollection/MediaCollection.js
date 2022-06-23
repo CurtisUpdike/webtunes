@@ -9,6 +9,8 @@ const GAP = 16;
 
 function MediaCollection({ title, content, width: containerWidth, data }) {
 	let [position, setPosition] = useState(0);
+	content = content.filter((item) => item.type !== 'stations');
+	if (content.length === 0) return null;
 	let itemsTotal = content.length;
 	let itemsInView = Math.floor(containerWidth / MAX) + 1;
 	let itemWidth = (containerWidth - GAP * (itemsInView - 1)) / itemsInView;
@@ -17,20 +19,14 @@ function MediaCollection({ title, content, width: containerWidth, data }) {
 	function scrollBackward() {
 		setPosition((currentPosition) => {
 			let newPosition = currentPosition - itemsInView;
-			if (newPosition < 0) {
-				return 0;
-			}
-			return newPosition;
+			return newPosition < 0 ? 0 : newPosition;
 		});
 	}
 
 	function scrollForward() {
 		setPosition((currentPosition) => {
 			let newPosition = currentPosition + itemsInView;
-			if (newPosition >= itemsTotal) {
-				return itemsTotal - 1;
-			}
-			return newPosition;
+			return newPosition >= itemsTotal ? itemsTotal - 1 : newPosition;
 		});
 	}
 
