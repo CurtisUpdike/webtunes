@@ -36,10 +36,10 @@ function MediaItem({ attributes, size, ...props }) {
 					</button>
 				</div>
 			</div>
-			<a className={styles.info} href={`/${kind}/${id}`}>
+			<Link className={styles.info} to={`/${kind}/${id}`}>
 				<div>{name}</div>
 				<div>{artistName || curatorName}</div>
-			</a>
+			</Link>
 		</div>
 	);
 }
