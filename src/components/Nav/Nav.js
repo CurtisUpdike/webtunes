@@ -36,13 +36,15 @@ let NavView = ({ userPlaylists }) => (
 			<span>Browse</span>
 		</NavLink>
 		<div className={styles.list}>
-			<h2 className={styles.heading}>Your Library</h2>
-			<NavLink to="/library/songs">Songs</NavLink>
-			<NavLink to="/library/albums">Albums</NavLink>
-			<NavLink to="/library/artists">Artists</NavLink>
+			{/* <h2 className={styles.heading}>Your Library</h2> */}
+			{/* <NavLink to="/library/songs">Songs</NavLink> */}
+			{/* <NavLink to="/library/albums">Albums</NavLink> */}
+			{/* <NavLink to="/library/artists">Artists</NavLink> */}
 
 			{userPlaylists && [
-				<h2 className={styles.heading} key="header">Playlists</h2>,
+				<h2 className={styles.heading} key="header">
+					Playlists
+				</h2>,
 				...userPlaylists.map((playlist) => (
 					<NavLink to={`library/playlist/${playlist.id}`} key={playlist.id}>
 						{playlist.attributes.name}

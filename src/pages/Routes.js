@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 import Home from './Home';
 import Browse from './Browse';
-import LibraryAlbums from './LibraryAlbums';
+// import LibraryAlbums from './LibraryAlbums';
 
 import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';
-import LibraryArtists from '../routes/LibraryArtists/LibraryArtists';
-import LibrarySongs from './LibrarySongs';
-import LibraryAlbum from '../routes/LibraryAlbum/LibraryAlbum';
+// import LibraryArtists from '../routes/LibraryArtists/LibraryArtists';
+// import LibrarySongs from './LibrarySongs';
+// import LibraryAlbum from '../routes/LibraryAlbum/LibraryAlbum';
 import LibraryPlaylist from '../routes/LibraryPlaylist/LibraryPlaylist';
 import Search from '../routes/Search/Search';
 import Album from '../routes/Album/Album';
@@ -23,15 +23,15 @@ function Main({ isAuthorized }) {
 					<Home path="/" />
 					<Browse path="browse" />
 					<RecentlyAdded path="library/recent" />
-					<LibraryAlbums path="library/albums" />
-					<LibraryArtists path="library/artists" />
-					<LibrarySongs path="library/songs" />
-					<LibraryAlbum path="library/album/:id" />
+					{/* <LibraryAlbums path="library/albums" /> */}
+					{/* <LibraryArtists path="library/artists" /> */}
+					{/* <LibrarySongs path="library/songs" /> */}
+					{/* <LibraryAlbum path="library/album/:id" /> */}
 					<LibraryPlaylist path="library/playlist/:id" />
 				</Fragment>
 			) : (
-					<Browse path="/" />
-				)}
+				<Browse path="/" />
+			)}
 			<Search path="search/:query" />
 			<Album path="album/:id" />
 			<Artist path="artist/:id" />
