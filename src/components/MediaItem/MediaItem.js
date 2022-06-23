@@ -4,14 +4,14 @@ import styles from './MediaItem.module.scss';
 import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-function MediaItem({ attributes, size }) {
+function MediaItem({ attributes, size, ...props }) {
 	let music = window.MusicKit.getInstance();
 	let {
 		artwork,
 		name,
-		playParams: {
-			kind, id
-		}
+		playParams: { kind, id },
+		artistName,
+		curatorName,
 	} = attributes;
 	let playParams = { [kind]: id };
 
@@ -23,14 +23,23 @@ function MediaItem({ attributes, size }) {
 	}
 
 	return (
-		<div className={styles.mediaItem}>
-			<img src={formatArtworkURL(artwork, size)} alt={`Artwork for ${name}`} />
-			<div>
-				<Link to={`/${kind}/${id}`}></Link>
-				<button onClick={play}>
-					<Icon icon={['far', 'play-circle']} size="3x" />
-				</button>
+		<div>
+			<div className={styles.mediaItem}>
+				<img
+					src={formatArtworkURL(artwork, size)}
+					alt={`Artwork for ${name}`}
+				/>
+				<div>
+					<Link to={`/${kind}/${id}`}></Link>
+					<button onClick={play}>
+						<Icon icon={['fa', 'play']} size="3x" />
+					</button>
+				</div>
 			</div>
+			<a className={styles.info} href={`/${kind}/${id}`}>
+				<div>{name}</div>
+				<div>{artistName || curatorName}</div>
+			</a>
 		</div>
 	);
 }

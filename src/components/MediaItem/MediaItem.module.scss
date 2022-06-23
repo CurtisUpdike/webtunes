@@ -31,15 +31,39 @@
 
 	& button {
 		color: #fff;
-		transition: transform 0.2s;
+		transition: transform 0.2s, color 0.2s;
 		z-index: 2;
 	}
 
 	& button:hover {
 		transform: scale(1.1);
+		color: var(--color-brand-primary);
 	}
 
 	& img {
 		width: 100%;
+	}
+}
+
+.info {
+	display: block;
+	padding-top: 4px;
+	text-decoration: none;
+	font-size: .85rem;
+	line-height: 1.125rem;
+	& div:first-child {
+		color: #fff;
+	}
+	& div:last-child {
+		color: grey;
+	}
+
+	&:hover {
+		& div:first-child {
+			text-decoration: underline;
+		}
+		& div:last-child {
+			text-decoration: underline;
+		}
 	}
 }
