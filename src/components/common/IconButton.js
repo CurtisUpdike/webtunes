@@ -5,6 +5,7 @@ import Button from './Button';
 let IconButton = ({ children, icon, ...props }) => (
 	<Button {...props}>
 		<Icon icon={icon} />
+		{children}
 	</Button>
 );
 

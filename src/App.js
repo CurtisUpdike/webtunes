@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import MusicKitProvider, { MusicKitContext } from './providers/MusicKitProvider';
+import MusicKitProvider, {
+	MusicKitContext,
+} from './providers/MusicKitProvider';
 import LoginButton from './components/LoginButton';
 import Nav from './components/Nav';
 import Routes from './pages/Routes';
@@ -43,6 +45,6 @@ const Auth = (props) => {
 	});
 
 	return props.children(isAuthorized);
-}
+};
 
 export default App;

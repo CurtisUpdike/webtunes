@@ -24,7 +24,7 @@
 	cursor: default;
 	background-color: var(--color-background-main);
 	grid-area: main;
-	padding: 30px;
+	padding: 1rem;
 	max-height: 100%;
 	overflow: scroll;
 }
