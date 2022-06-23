@@ -2,7 +2,8 @@
 	display: flex;
 	justify-content: space-between;
 	/* margin-bottom: 12px; */
-	width: 224px;
+	/* width: 224px; */
+	width: 150px;
 }
 
 .container button:hover {

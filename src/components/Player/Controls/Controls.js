@@ -25,12 +25,12 @@ function PlayerButtons() {
 
 	return (
 		<div className={styles.container}>
-			<IconButton
+			{/* <IconButton
 				icon="random"
 				className={styles.shuffle}
 				onClick={() => console.log('todo: random')}
 				disabled
-			/>
+			/> */}
 			<IconButton
 				icon="backward"
 				className={styles.skip}
@@ -58,12 +58,12 @@ function PlayerButtons() {
 				onClick={skipToNextItem}
 				disabled={!isPlayable}
 			/>
-			<IconButton
+			{/* <IconButton
 				icon="sync-alt"
 				className={styles.repeat}
 				onClick={() => console.log('todo: repeat')}
 				disabled
-			/>
+			/> */}
 		</div>
 	);
 }
