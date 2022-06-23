@@ -9,7 +9,7 @@ class MusicKitProvider extends Component {
 		super(props);
 		this.state = {
 			loading: true,
-			error: false
+			error: false,
 		};
 	}
 
@@ -24,12 +24,12 @@ class MusicKitProvider extends Component {
 	async configure() {
 		try {
 			let { developerToken, expiration } = this.getStore();
-			const isValidToken = (expiration - Date.now() > 0);
+			const isValidToken = expiration - Date.now() > 0;
 			if (!isValidToken) {
 				const response = await fetch(PATH_TO_API);
 				const data = await response.json();
 				this.setStore(data);
-				developerToken = data.developerToken
+				developerToken = data.developerToken;
 			}
 			window.MusicKit.configure({
 				developerToken: developerToken,
@@ -39,8 +39,7 @@ class MusicKitProvider extends Component {
 				},
 			});
 			this.setState({ loading: false });
-		}
-		catch (error) {
+		} catch (error) {
 			console.error(error);
 			this.setState({ error });
 		}
@@ -72,12 +71,14 @@ class MusicKitProvider extends Component {
 }
 
 const ErrorMessage = () => (
-	<h1 style={{
-		display: 'flex',
-		justifyContent: 'center',
-		marginTop: '40vh'
-	}}>
-		There was an error loading the MusicKit library. Please try again another time.
+	<h1
+		style={{
+			display: 'flex',
+			justifyContent: 'center',
+			marginTop: '40vh',
+		}}>
+		There was an error loading the MusicKit library. Please try again another
+		time.
 	</h1>
 );
 
