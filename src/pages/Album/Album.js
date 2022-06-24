@@ -6,15 +6,22 @@ import Tracklist from '../../components/Tracklist/Tracklist';
 import IconButton from '../../components/common/IconButton';
 
 function Album({ id }) {
+	const music = window.MusicKit.getInstance();
 	const [album, setAlbum] = useState(null);
 
+	function playAlbum() {
+		music
+			.setQueue({ album: id })
+			.then(() => music.player.play())
+			.catch(console.error.bind(console));
+	}
+
 	useEffect(() => {
-		const music = window.MusicKit.getInstance();
 		music.api
 			.album(id)
 			.then(setAlbum)
 			.catch((e) => console.error(e));
-	}, [id]);
+	}, [id, music]);
 
 	if (!album) return null;
 
@@ -27,7 +34,6 @@ function Album({ id }) {
 			releaseDate,
 			editorialNotes,
 			copyright,
-			playParams: { kind, id: albumId },
 		},
 		relationships: {
 			artists: { data: artistData },
@@ -38,16 +44,8 @@ function Album({ id }) {
 		editorialNotes = editorialNotes.standard || editorialNotes.short;
 	}
 
-	function playAlbum() {
-		const music = window.MusicKit.getInstance();
-		music
-			.setQueue({ [kind]: albumId })
-			.then(() => music.player.play())
-			.catch(console.error.bind(console));
-	}
-
 	return (
-		<div className={styles.main}>
+		<div className={styles.album}>
 			<div className={styles.about}>
 				<div className={styles.left}>
 					<Artwork

@@ -1,6 +1,7 @@
-.main {
+.album {
 	display: flex;
 	flex-direction: column;
+	max-width: 60rem;
 }
 
 .about {
@@ -15,7 +16,6 @@
 
 .right {
 	margin-left: 2rem;
-	max-width: 40rem;
 }
 
 .artwork {
