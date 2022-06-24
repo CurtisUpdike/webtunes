@@ -20,9 +20,8 @@ function PlaylistTrack({
 	artwork,
 	name,
 	durationInMillis,
-	playParams,
+	playParams: { kind, id },
 }) {
-	const { kind, id } = playParams;
 	function play() {
 		const music = window.MusicKit.getInstance();
 		music
@@ -41,7 +40,7 @@ function PlaylistTrack({
 					className={styles.artwork}
 				/>
 				<div className={styles.buttonWrapper}>
-					<PlayButton className={styles.playButton} {...playParams} />
+					<PlayButton className={styles.playButton} id={id} kind={kind} />
 				</div>
 			</div>
 			<div className={styles.text}>

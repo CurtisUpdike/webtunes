@@ -4,13 +4,13 @@ import Home from './Home';
 import Browse from './Browse';
 import Album from './Album';
 import Playlist from './Playlist';
+import LibraryPlaylist from './LibraryPlaylist';
 // import LibraryAlbums from './LibraryAlbums';
 
 import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';
 // import LibraryArtists from '../routes/LibraryArtists/LibraryArtists';
 // import LibrarySongs from './LibrarySongs';
 // import LibraryAlbum from '../routes/LibraryAlbum/LibraryAlbum';
-import LibraryPlaylist from '../routes/LibraryPlaylist/LibraryPlaylist';
 import Search from '../routes/Search/Search';
 import Artist from '../routes/Artist/Artist';
 import NotFound from '../components/NotFound/NotFound';
