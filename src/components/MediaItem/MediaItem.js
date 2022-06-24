@@ -4,7 +4,7 @@ import styles from './MediaItem.module.scss';
 import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-function MediaItem({ attributes, size, ...props }) {
+function MediaItem({ attributes, size }) {
 	let music = window.MusicKit.getInstance();
 	let {
 		artwork,
@@ -13,11 +13,10 @@ function MediaItem({ attributes, size, ...props }) {
 		artistName,
 		curatorName,
 	} = attributes;
-	let playParams = { [kind]: id };
 
 	function play() {
 		music
-			.setQueue(playParams)
+			.setQueue({ [kind]: id })
 			.then(() => music.player.play())
 			.catch(console.error.bind(console));
 	}
