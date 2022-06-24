@@ -4,6 +4,7 @@ import Home from './Home';
 import Browse from './Browse';
 import Album from './Album';
 import Playlist from './Playlist';
+import Artist from './Artist';
 import LibraryPlaylist from './LibraryPlaylist';
 // import LibraryAlbums from './LibraryAlbums';
 
@@ -12,7 +13,6 @@ import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';
 // import LibrarySongs from './LibrarySongs';
 // import LibraryAlbum from '../routes/LibraryAlbum/LibraryAlbum';
 import Search from '../routes/Search/Search';
-import Artist from '../routes/Artist/Artist';
 import NotFound from '../components/NotFound/NotFound';
 
 function Main({ isAuthorized }) {
