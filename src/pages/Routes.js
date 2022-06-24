@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Router } from '@reach/router';
 import Home from './Home';
 import Browse from './Browse';
+import Playlist from './Playlist';
 // import LibraryAlbums from './LibraryAlbums';
 
 import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';
@@ -12,7 +13,6 @@ import LibraryPlaylist from '../routes/LibraryPlaylist/LibraryPlaylist';
 import Search from '../routes/Search/Search';
 import Album from '../routes/Album/Album';
 import Artist from '../routes/Artist/Artist';
-import Playlist from '../routes/Playlist/Playlist';
 import NotFound from '../components/NotFound/NotFound';
 
 function Main({ isAuthorized }) {

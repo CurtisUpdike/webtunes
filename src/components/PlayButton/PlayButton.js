@@ -1,21 +1,17 @@
 import React from 'react';
-import Icon from '../../components/common/IconButton';
+import IconButton from '../../components/common/IconButton';
 
-function PlayButton({ id, kind, className }) {
-	let music = window.MusicKit.getInstance();
-	let playParams = { [kind]: id };
-
+function PlayButton({ id, kind, ...props }) {
 	function play() {
+		let music = window.MusicKit.getInstance();
 		music
-			.setQueue(playParams)
+			.setQueue({ [kind]: id })
 			.then(() => music.player.play())
 			.catch(console.error.bind(console));
 	}
 
 	return (
-		<button onClick={play} className={className} aria-label="play">
-			<Icon icon={['fa', 'play']} size="3x" />
-		</button>
+		<IconButton icon={['fa', 'play']} size="3x" onClick={play} {...props} />
 	);
 }
 

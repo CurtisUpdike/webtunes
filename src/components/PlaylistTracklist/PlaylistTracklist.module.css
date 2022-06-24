@@ -1,44 +1,70 @@
 .tracklist {
-	margin-bottom: 15px;
-	padding-left: 60px;
+	padding: 0;
+	margin: 1rem 1rem;
 }
 
 .track {
 	align-items: center;
-	border-top: 1px solid var(--border-color);
 	color: var(--light-font-color);
 	display: flex;
 	font-size: 13px;
 	font-weight: 400;
-	height: 55px;
+	height: 60px;
 	position: relative;
+	padding-right: 1rem;
+	padding-left: calc(1rem + 60px);
+	border-radius: 5px;
+	transition: background-color 0.2s;
+}
+
+.track:hover {
+	background-color: var(--color-border-main);
 }
 
 .album {
 	position: absolute;
 	height: 45px;
-	left: -60px;
+	left: 15px;
 	width: 45px;
+}
+
+.buttonWrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--brand-color);
+	opacity: 0;
+	transition: opacity 0.1s ease-in;
+}
+
+.track:hover .buttonWrapper {
+	opacity: 1;
+}
+
+.playButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100%;
+	height: 2rem;
+	width: 2rem;
+	background-color: var(--brand-color);
+}
+
+.playButton svg {
+	color: #fff;
+	font-size: 0.8rem;
+	transition: transform 0.1s ease-in;
 }
 
 .artwork {
 	border: 1px solid var(--border-color);
 	border-radius: 4px;
-}
-
-.track:hover .playButton {
-	opacity: 100;
-}
-
-.playButton {
-	position: absolute;
-	left: 5px;
-	bottom: 4px;
-	opacity: 0;
-	-webkit-transition: opacity 0.1s ease-in;
-	transition: opacity 0.1s ease-in;
-	width: 36px;
-	height: 36px;
 }
 
 .text {

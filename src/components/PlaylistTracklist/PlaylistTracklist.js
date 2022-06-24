@@ -1,16 +1,16 @@
 import React from 'react';
 import { formatMediaTime } from '../../utils/utils';
 import Artwork from '../Artwork/Artwork';
-import styles from './PlaylistTracklist.module.css';
 import PlayButton from '../PlayButton/PlayButton';
+import styles from './PlaylistTracklist.module.css';
 
 function PlaylistTracklist({ tracks }) {
 	return (
-		<div className={styles.tracklist}>
+		<ul className={styles.tracklist}>
 			{tracks.map((item, key) => {
 				return <PlaylistTrack key={key} {...item.attributes} />;
 			})}
-		</div>
+		</ul>
 	);
 }
 
@@ -22,8 +22,17 @@ function PlaylistTrack({
 	durationInMillis,
 	playParams,
 }) {
+	const { kind, id } = playParams;
+	function play() {
+		const music = window.MusicKit.getInstance();
+		music
+			.setQueue({ [kind]: id })
+			.then(() => music.player.play())
+			.catch(console.error.bind(console));
+	}
+
 	return (
-		<div className={styles.track}>
+		<li onDoubleClick={play} className={styles.track}>
 			<div className={styles.album}>
 				<Artwork
 					artwork={artwork}
@@ -31,7 +40,9 @@ function PlaylistTrack({
 					size={45}
 					className={styles.artwork}
 				/>
-				<PlayButton className={styles.playButton} {...playParams} />
+				<div className={styles.buttonWrapper}>
+					<PlayButton className={styles.playButton} {...playParams} />
+				</div>
 			</div>
 			<div className={styles.text}>
 				<div className={styles.info}>
@@ -40,7 +51,7 @@ function PlaylistTrack({
 				</div>
 				<p className={styles.duration}>{formatMediaTime(durationInMillis)}</p>
 			</div>
-		</div>
+		</li>
 	);
 }
 
