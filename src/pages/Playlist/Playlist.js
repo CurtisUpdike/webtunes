@@ -3,9 +3,11 @@ import Artwork from '../../components/Artwork/Artwork';
 import IconButton from '../../components/common/IconButton';
 import PlaylistTracklist from '../../components/PlaylistTracklist/PlaylistTracklist';
 import styles from './Playlist.module.css';
+import Loading from '../../components/common/Loading';
 
 function Playlist({ id }) {
 	const music = window.MusicKit.getInstance();
+	const [isLoading, setIsLoading] = useState(true);
 	const [playlist, setPlaylist] = useState(null);
 
 	function playAlbum() {
@@ -16,13 +18,15 @@ function Playlist({ id }) {
 	}
 
 	useEffect(() => {
+		setIsLoading(true);
 		music.api
 			.playlist(id)
 			.then(setPlaylist)
+			.then(() => setIsLoading(false))
 			.catch((e) => console.error(e));
 	}, [id, music]);
 
-	if (!playlist) return null;
+	if (isLoading) return <Loading />;
 
 	let {
 		attributes: { name, artwork, description, curatorName },
