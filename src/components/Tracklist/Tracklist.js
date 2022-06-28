@@ -52,6 +52,7 @@ function Track({ song }) {
 			playParams,
 		},
 	} = song;
+	if (!playParams) return null;
 	let duration = Math.ceil(durationInMillis / 1000);
 
 	function play() {

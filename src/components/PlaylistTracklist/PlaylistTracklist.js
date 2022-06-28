@@ -20,8 +20,11 @@ function PlaylistTrack({
 	artwork,
 	name,
 	durationInMillis,
-	playParams: { kind, id },
+	playParams,
 }) {
+	if (!playParams) return null;
+	let { kind, id } = playParams;
+
 	function play() {
 		const music = window.MusicKit.getInstance();
 		music
