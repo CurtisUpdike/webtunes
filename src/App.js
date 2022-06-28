@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import MusicKitProvider, {
 	MusicKitContext,
 } from './providers/MusicKitProvider';
-import LoginButton from './components/LoginButton';
+import TopBar from './features/TopBar';
 import Nav from './components/Nav';
 import Routes from './pages/Routes';
 import Player from './components/Player';
@@ -15,7 +15,7 @@ const App = () => (
 				{(isAuthorized) => (
 					<div className={styles.app}>
 						<header className={styles.header}>
-							<LoginButton isAuthorized={isAuthorized} />
+							<TopBar />
 						</header>
 						<Nav isAuthorized={isAuthorized} />
 						<Player />
