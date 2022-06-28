@@ -51,7 +51,7 @@
 
 .notes {
 	color: var(base-font-color);
-	font-size: 13px;
+	font-size: 1rem;
 	margin-top: 6px;
 	line-height: 1.25rem;
 }

@@ -40,9 +40,7 @@ function Album({ id }) {
 		},
 	} = album;
 
-	if (editorialNotes) {
-		editorialNotes = editorialNotes.standard || editorialNotes.short;
-	}
+	editorialNotes = editorialNotes ? editorialNotes.short : null;
 
 	return (
 		<div className={styles.album}>
@@ -61,17 +59,9 @@ function Album({ id }) {
 						{artistName}
 					</Link>
 					<p className={styles.genre}>
-						{genreNames[0].toUpperCase()} · 
-						{releaseDate.substring(0, 4)}
+						{genreNames[0].toUpperCase()} · {releaseDate.substring(0, 4)}
 					</p>
-					{editorialNotes && (
-						<p
-							className={styles.notes}
-							dangerouslySetInnerHTML={{
-								__html: editorialNotes,
-							}}
-						/>
-					)}
+					{editorialNotes && <p className={styles.notes}>{editorialNotes} </p>}
 					<IconButton icon="play" className={styles.play} onClick={playAlbum}>
 						Play
 					</IconButton>

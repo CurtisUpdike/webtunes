@@ -31,9 +31,7 @@ function Playlist({ id }) {
 		},
 	} = playlist;
 
-	if (description) {
-		description = description.standard || description.short;
-	}
+	description = description ? description.short : null;
 
 	return (
 		<div className={styles.playlist}>
@@ -49,14 +47,7 @@ function Playlist({ id }) {
 				<div className={styles.right}>
 					<h1 className={styles.name}>{name}</h1>
 					<h2 className={styles.curator}>{curatorName}</h2>
-					{description && (
-						<p
-							className={styles.description}
-							dangerouslySetInnerHTML={{
-								__html: description,
-							}}
-						/>
-					)}
+					{description && <p className={styles.description}>{description}</p>}
 					<IconButton icon="play" className={styles.play} onClick={playAlbum}>
 						Play
 					</IconButton>
