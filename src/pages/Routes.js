@@ -27,7 +27,6 @@ function Main({ isAuthorized }) {
 					{/* <LibraryArtists path="library/artists" /> */}
 					{/* <LibrarySongs path="library/songs" /> */}
 					{/* <LibraryAlbum path="library/album/:id" /> */}
-					<LibraryPlaylist path="library/playlist/:id" />
 				</Fragment>
 			) : (
 				<Browse path="/" />

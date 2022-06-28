@@ -46,7 +46,7 @@ let NavView = ({ userPlaylists }) => (
 					Playlists
 				</h2>,
 				...userPlaylists.map((playlist) => (
-					<NavLink to={`library/playlist/${playlist.id}`} key={playlist.id}>
+					<NavLink to={`/playlist/${playlist.id}`} key={playlist.id}>
 						{playlist.attributes.name}
 					</NavLink>
 				)),

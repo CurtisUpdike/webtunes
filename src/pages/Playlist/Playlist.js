@@ -8,6 +8,7 @@ import Loading from '../../components/common/Loading';
 function Playlist({ id }) {
 	const music = window.MusicKit.getInstance();
 	const [isLoading, setIsLoading] = useState(true);
+	const [hasError, setHasError] = useState(false);
 	const [playlist, setPlaylist] = useState(null);
 
 	function playAlbum() {
@@ -18,14 +19,26 @@ function Playlist({ id }) {
 	}
 
 	useEffect(() => {
-		setIsLoading(true);
-		music.api
-			.playlist(id)
-			.then(setPlaylist)
-			.then(() => setIsLoading(false))
-			.catch((e) => console.error(e));
+		async function fetchPlaylist() {
+			try {
+				setIsLoading(true);
+				let response;
+				if (id.substring(0, 2) === 'pl') {
+					response = await music.api.playlist(id);
+				} else {
+					response = await music.api.library.playlist(id);
+				}
+				setPlaylist(response);
+				setIsLoading(false);
+			} catch (err) {
+				setHasError(true);
+			}
+		}
+
+		fetchPlaylist(id);
 	}, [id, music]);
 
+	if (hasError) return <div>Sorry, we could not find the playlist.</div>;
 	if (isLoading) return <Loading />;
 
 	let {
