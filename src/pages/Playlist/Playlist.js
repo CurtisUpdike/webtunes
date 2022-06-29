@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import Artwork from '../../components/Artwork/Artwork';
-import IconButton from '../../components/common/IconButton';
+import MediaPanel from '../../features/MediaPanel';
 import PlaylistTracklist from '../../components/PlaylistTracklist/PlaylistTracklist';
+import Center from '../../components/Center';
+import Loading from '../../components/Loading';
 import styles from './Playlist.module.css';
-import Loading from '../../components/common/Loading';
 
 function Playlist({ id }) {
 	const music = window.MusicKit.getInstance();
-	const [isLoading, setIsLoading] = useState(true);
-	const [hasError, setHasError] = useState(false);
-	const [playlist, setPlaylist] = useState(null);
+	const [playlist, setPlaylist] = useState();
+	const [error, setError] = useState();
+	const [loading, setLoading] = useState(true);
 
-	function playAlbum() {
-		music
-			.setQueue({ playlist: id })
-			.then(() => music.player.play())
-			.catch(console.error.bind(console));
+	async function playAlbum() {
+		try {
+			await music.setQueue({ playlist: id });
+			await music.player.play();
+		} catch (err) {
+			setError(err.message);
+		}
 	}
 
 	useEffect(() => {
 		async function fetchPlaylist() {
 			try {
-				setIsLoading(true);
+				setLoading(true);
 				let response;
 				if (id.substring(0, 2) === 'pl') {
 					response = await music.api.playlist(id);
@@ -29,17 +31,17 @@ function Playlist({ id }) {
 					response = await music.api.library.playlist(id);
 				}
 				setPlaylist(response);
-				setIsLoading(false);
+				setLoading(false);
 			} catch (err) {
-				setHasError(true);
+				setError(err.message);
 			}
 		}
 
 		fetchPlaylist(id);
 	}, [id, music]);
 
-	if (hasError) return <div>Sorry, we could not find the playlist.</div>;
-	if (isLoading) return <Loading />;
+	if (error) return <Center>{error}</Center>;
+	if (loading) return <Loading />;
 
 	let {
 		attributes: { name, artwork, description, curatorName },
@@ -52,24 +54,13 @@ function Playlist({ id }) {
 
 	return (
 		<div className={styles.playlist}>
-			<div className={styles.about}>
-				<div className={styles.left}>
-					<Artwork
-						className={styles.artwork}
-						artwork={artwork}
-						name={name}
-						size="320"
-					/>
-				</div>
-				<div className={styles.right}>
-					<h1 className={styles.name}>{name}</h1>
-					<h2 className={styles.curator}>{curatorName}</h2>
-					{description && <p className={styles.description}>{description}</p>}
-					<IconButton icon="play" className={styles.play} onClick={playAlbum}>
-						Play
-					</IconButton>
-				</div>
-			</div>
+			<MediaPanel
+				title={name}
+				artwork={artwork}
+				curator={curatorName}
+				description={description}
+				play={playAlbum}
+			/>
 			{tracks && <PlaylistTracklist tracks={tracks} />}
 			<p className={styles.footer}>{tracks && `${tracks.length} Songs`}</p>
 		</div>
