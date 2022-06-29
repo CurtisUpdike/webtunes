@@ -1,12 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import Button from './Button';
 
 let IconButton = ({ children, icon, ...props }) => (
-	<Button {...props}>
+	<button type="button" {...props}>
 		<Icon icon={icon} />
 		{children}
-	</Button>
+	</button>
 );
 
 export default IconButton;
