@@ -1,23 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-
-const styles = {
-	container: {
-		position: 'absolute',
-		top: 0,
-		right: 0,
-		bottom: 0,
-		left: 0,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-};
+import Center from '../Center';
 
 const Loading = () => (
-	<div style={styles.container}>
+	<Center>
 		<Icon icon="spinner" size="3x" pulse />
-	</div>
+	</Center>
 );
 
 export default Loading;
