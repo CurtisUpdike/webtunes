@@ -51,6 +51,7 @@
 .track {
 	&:hover {
 		background-color: var(--color-border-main);
+		border-radius: 6px;
 	}
 	& svg {
 		opacity: 0;

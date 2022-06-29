@@ -12,7 +12,9 @@ function Tracklist({ songs }) {
 				<span>ARTIST</span>
 				<span>ALBUM</span>
 				<span>
-					<Icon icon={['far', 'clock']} />
+					<div className={styles.duration}>
+						<Icon icon={['far', 'clock']} />
+					</div>
 				</span>
 			</header>
 			<ol>
@@ -43,6 +45,7 @@ function Tracklist({ songs }) {
 }
 
 function Track({ song }) {
+	console.log(song);
 	let {
 		attributes: {
 			name: title,
