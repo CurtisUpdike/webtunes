@@ -28,13 +28,21 @@ const MediaPanel = ({
 			<h1 className={styles.title}>{title}</h1>
 
 			{album && (
-				<Link to={album.link} className={styles.album}>
+				<Link
+					to={album.link || '#'}
+					className={styles.album}
+					style={album.link ? null : { pointerEvents: 'none' }}
+				>
 					{album.name}
 				</Link>
 			)}
 
 			{artist && (
-				<Link to={artist.link} className={styles.artist}>
+				<Link
+					to={artist.link || '#'}
+					className={styles.artist}
+					style={artist.link ? null : { pointerEvents: 'none' }}
+				>
 					{artist.name}
 				</Link>
 			)}

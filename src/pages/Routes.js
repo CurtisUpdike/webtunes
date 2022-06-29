@@ -5,7 +5,7 @@ import Browse from './Browse';
 import Album from './Album';
 import Playlist from './Playlist';
 import Artist from './Artist';
-import Song from './Song.js';
+import Song from './Song';
 // import LibraryAlbums from './LibraryAlbums';
 
 import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';

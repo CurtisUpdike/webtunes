@@ -62,7 +62,7 @@ export default function Song({ id }) {
 				name: artistName,
 				link: `/artist/${artists.data[0].id}`,
 			}}
-			genre={genreNames.slice(0, -1).reduce((a, b) => a + '/' + b)}
+			genre={genreNames[0]}
 			releaseDate={releaseDate.substring(0, 4)}
 			play={play}
 		/>

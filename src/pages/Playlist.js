@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import MediaPanel from '../../features/MediaPanel';
-import PlaylistTracklist from '../../components/PlaylistTracklist/PlaylistTracklist';
-import Center from '../../components/Center';
-import Loading from '../../components/Loading';
-import styles from './Playlist.module.css';
+import MediaPanel from '../features/MediaPanel';
+import PlaylistTracklist from '../components/PlaylistTracklist';
+import Center from '../components/Center';
+import Loading from '../components/Loading';
 
 function Playlist({ id }) {
 	const music = window.MusicKit.getInstance();
@@ -37,32 +36,39 @@ function Playlist({ id }) {
 			}
 		}
 
-		fetchPlaylist(id);
+		fetchPlaylist();
 	}, [id, music]);
 
-	if (error) return <Center>{error}</Center>;
+	if (error) {
+		return (
+			<Center>
+				<p>{error}</p>
+			</Center>
+		);
+	}
+
 	if (loading) return <Loading />;
 
-	let {
+	const {
 		attributes: { name, artwork, description, curatorName },
 		relationships: {
 			tracks: { data: tracks },
 		},
 	} = playlist;
 
-	description = description ? description.short : null;
-
 	return (
-		<div className={styles.playlist}>
+		<div style={{ maxWidth: '60rem' }}>
 			<MediaPanel
 				title={name}
 				artwork={artwork}
 				curator={curatorName}
-				description={description}
+				description={description ? description.short : null}
 				play={playAlbum}
 			/>
 			{tracks && <PlaylistTracklist tracks={tracks} />}
-			<p className={styles.footer}>{tracks && `${tracks.length} Songs`}</p>
+			<p style={{ fontSize: '0.75rem', textAlign: 'center' }}>
+				{tracks && `${tracks.length} Songs`}
+			</p>
 		</div>
 	);
 }
