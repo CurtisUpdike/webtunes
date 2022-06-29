@@ -5,7 +5,7 @@ import Browse from './Browse';
 import Album from './Album';
 import Playlist from './Playlist';
 import Artist from './Artist';
-import LibraryPlaylist from './LibraryPlaylist';
+import Song from './Song.js';
 // import LibraryAlbums from './LibraryAlbums';
 
 import RecentlyAdded from '../routes/RecentlyAdded/RecentlyAdded';
@@ -35,6 +35,7 @@ function Main({ isAuthorized }) {
 			<Album path="album/:id" />
 			<Artist path="artist/:id" />
 			<Playlist path="playlist/:id" />
+			<Song path="song/:id" />
 			<NotFound default />
 		</Router>
 	);

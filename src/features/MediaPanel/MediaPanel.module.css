@@ -1,0 +1,90 @@
+.container {
+	display: flex;
+    margin: 0 2rem 2rem;
+	max-width: 60rem;
+}
+
+
+.details {
+    margin-left: 2rem;
+}
+
+.artwork {
+	border-radius: 6px;
+}
+
+.title {
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 700;
+	margin: 0 0 0.5rem 0;
+	padding: 0;
+}
+
+.album {
+    display: block;
+	color: var(--color-font-base);
+	font-size: 1.25rem;
+	margin: 0 0 0.25rem 0;
+	text-decoration: none;
+}
+
+.album:hover {
+    text-decoration: underline;
+}
+
+.artist {
+    display: block;
+	color: var(--color-brand-primary);
+	font-size: 1.25rem;
+	margin: 0 0 0.5rem 0;
+	text-decoration: none;
+}
+
+.artist:hover {
+    text-decoration: underline;
+}
+
+.curator {
+    color: var(--color-brand-primary);
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.description {
+    color: var(--color-font-base);
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.25rem;
+}
+
+.info {
+	color: var(--color-font-base);
+	font-size: 0.8rem;
+	margin: 0 0 0.5rem;
+}
+
+.play {
+	color: #fff;
+	background-color: var(--color-brand-primary);
+	margin-top: 0.8rem;
+	font-size: 0.75rem;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	transition: transform 0.2s;
+}
+
+.play:hover {
+	transform: scale(1.05);
+}
+
+.play svg {
+	margin-right: 0.5rem;
+}
+
+.footer {
+	color: var(--color-font-base);
+	font-size: 13px;
+	margin: 2rem 0 1rem 0;
+	text-align: center;
+}
