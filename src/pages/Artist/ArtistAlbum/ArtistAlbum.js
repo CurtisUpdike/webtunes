@@ -1,36 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import formatArtworkURL from '../../../utils/formatArtworkURL';
 import styles from './ArtistAlbum.module.scss';
 
-function ArtistAlbum({ id }) {
-	const [album, setAlbum] = useState(null);
-	useEffect(() => {
-		const music = window.MusicKit.getInstance();
-		music.api
-			.album(id)
-			.then(setAlbum)
-			.catch((e) => console.error(e));
-	}, [id]);
+function ArtistAlbum({ name, artwork, releaseDate, kind, id, setError }) {
+	const music = window.MusicKit.getInstance();
 
-	if (!album) return null;
+	if (!name) return null;
 
-	const {
-		attributes: {
-			name,
-			artwork,
-			releaseDate,
-			playParams: { kind },
-		},
-	} = album;
-
-	function play() {
-		const music = window.MusicKit.getInstance();
-		music
-			.setQueue({ [kind]: id })
-			.then(() => music.player.play())
-			.catch(console.error.bind(console));
+	async function play() {
+		try {
+			await music.setQueue({ [kind]: id });
+			await music.player.play();
+		} catch (err) {
+			setError(err.message);
+		}
 	}
 
 	return (
@@ -46,7 +31,7 @@ function ArtistAlbum({ id }) {
 			</div>
 			<Link className={styles.info} to={`/${kind}/${id}`}>
 				<div>{name}</div>
-				<div>{releaseDate.substring(0, 4)}</div>
+				<div>{new Date(releaseDate).getFullYear()}</div>
 			</Link>
 		</div>
 	);
