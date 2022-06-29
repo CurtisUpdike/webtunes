@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from 'react';
-// import styles from './LibrarySongs.module.css';
-import Loading from '../../components/common/Loading';
+import fetchAll from '../../utils/fetchAll';
+import Loading from '../../components/Loading';
 import Tracklist from '../../components/Tracklist';
 
 function LibrarySongs() {
-	let [songs, setSongs] = useState([]);
-	let [loading, setLoading] = useState(true);
+	const music = window.MusicKit.getInstance();
+	const [songs, setSongs] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const LIMIT = 100; // maximum the MusicKit API will return for each request
-
-		function handleResponse(res) {
-			if (res.length > 0) {
-				setSongs([...songs, ...res]);
-			}
+		async function fetchAllSongs() {
+			const fetcher = music.api.library.songs.bind(music.api.library);
+			const data = await fetchAll(fetcher);
+			setSongs(data);
 			setLoading(false);
 		}
 
-		let mk = window.MusicKit.getInstance();
-		mk.api.library
-			.songs(null, { limit: LIMIT, offset: songs.length })
-			.then(handleResponse)
-			.catch(console.error.bind(console));
-	}, [songs]);
+		fetchAllSongs();
+	}, [music]);
+
+	if (loading) return <Loading />;
 
 	return (
 		<div className={'styles.songs'}>
