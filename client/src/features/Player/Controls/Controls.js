@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import styles from './Controls.module.css';
-import IconButton from '../../common/IconButton';
+
+let IconButton = ({ children, icon, ...props }) => (
+	<button type="button" {...props}>
+		<Icon icon={icon} />
+		{children}
+	</button>
+);
 
 function PlayerButtons() {
 	const music = window.MusicKit.getInstance();
