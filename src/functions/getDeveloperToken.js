@@ -12,22 +12,18 @@ function parseAuthKey(key) {
 }
 
 exports.handler = async () => {
-	const developerToken = jwt.sign(
-		{}, 
-		parseAuthKey(process.env.AUTH_KEY), 
-		{
-			algorithm: "ES256", // only supported algorithm by MusicKit
-			expiresIn: "30d",
-			issuer: process.env.TEAM_ID,
-			header: {
-				alg: "ES256",
-				kid: process.env.KEY_ID
-			}
-		}
-	);
-	
+	const developerToken = jwt.sign({}, parseAuthKey(process.env.AUTH_KEY), {
+		algorithm: 'ES256', // only supported algorithm by MusicKit
+		expiresIn: '30d',
+		issuer: process.env.TEAM_ID,
+		header: {
+			alg: 'ES256',
+			kid: process.env.KEY_ID,
+		},
+	});
+
 	return {
 		statusCode: 200,
-		body: JSON.stringify({ developerToken })
+		body: JSON.stringify({ developerToken }),
 	};
 };
