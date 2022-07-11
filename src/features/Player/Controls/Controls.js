@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Controls.module.css';
-import MK from '../../../services/music-kit';
 import IconButton from '../../common/IconButton';
 
 function PlayerButtons() {
+	const music = window.MusicKit.getInstance();
 	let isPlaying = usePlaybackState();
 	let isPlayable = usePlayableState();
 
 	async function skipToPreviousItem() {
-		await MK.player.skipToPreviousItem();
+		await music.player.skipToPreviousItem();
 	}
 
 	async function skipToNextItem() {
-		await MK.player.skipToNextItem();
+		await music.player.skipToNextItem();
 	}
 
 	async function play() {
-		await MK.player.play();
+		await music.player.play();
 	}
 
 	async function pause() {
-		await MK.player.pause();
+		await music.player.pause();
 	}
 
 	return (
@@ -69,16 +69,20 @@ function PlayerButtons() {
 }
 
 function usePlaybackState() {
-	let [isPlaying, setIsPlaying] = useState(MK.player.isPlaying);
+	const music = window.MusicKit.getInstance();
+	let [isPlaying, setIsPlaying] = useState(music.player.isPlaying);
 
 	useEffect(() => {
 		function handlePlaybackState() {
-			setIsPlaying(MK.player.isPlaying);
+			setIsPlaying(music.player.isPlaying);
 		}
 
-		MK.player.addEventListener('playbackStateDidChange', handlePlaybackState);
+		music.player.addEventListener(
+			'playbackStateDidChange',
+			handlePlaybackState
+		);
 		return function cleanup() {
-			MK.player.removeEventListener(
+			music.player.removeEventListener(
 				'playbackStateDidChange',
 				handlePlaybackState
 			);
@@ -89,16 +93,17 @@ function usePlaybackState() {
 }
 
 function usePlayableState() {
-	let [isPlayable, setIsPlayable] = useState(MK.instance.player.isReady);
+	const music = window.MusicKit.getInstance();
+	let [isPlayable, setIsPlayable] = useState(music.player.isReady);
 
 	useEffect(() => {
 		function handleCanPlay() {
-			setIsPlayable(MK.instance.player.isReady);
+			setIsPlayable(music.player.isReady);
 		}
 
-		MK.instance.player.addEventListener('mediaCanPlay', handleCanPlay);
+		music.player.addEventListener('mediaCanPlay', handleCanPlay);
 		return function cleanup() {
-			MK.instance.player.removeEventListener('mediaCanPlay', handleCanPlay);
+			music.player.removeEventListener('mediaCanPlay', handleCanPlay);
 		};
 	});
 

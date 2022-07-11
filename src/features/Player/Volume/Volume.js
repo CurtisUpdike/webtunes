@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import styles from './Volume.module.css';
-import MK from '../../../services/music-kit';
-import IconButton from '../../common/IconButton';
+import IconButton from '../../../components/common/IconButton';
 import ProgressBar from '../ProgressBar';
 
 function Volume() {
-	let [volume, setVolume] = useState(MK.volume);
-	let [isMuted, setIsMuted] = useState(MK.volume === 0);
+	const music = window.MusicKit.getInstance();
+	let [volume, setVolume] = useState(music.player.volume);
+	let [isMuted, setIsMuted] = useState(music.player.volume === 0);
 	let volumeDisplay = isMuted ? 0 : volume * 100;
 
 	function toggleMute() {
 		if (isMuted) {
-			MK.volume = volume;
-			setIsMuted(MK.volume === 0);
+			music.player.volume = volume;
+			setIsMuted(music.player.volume === 0);
 		} else {
-			MK.volume = 0;
-			setIsMuted(MK.volume === 0);
+			music.player.volume = 0;
+			setIsMuted(music.player.volume === 0);
 		}
 	}
 
 	function setVolumeAtSelection(percentSelected) {
 		let newVolume = Math.floor(percentSelected * 100) / 100;
-		MK.volume = newVolume;
+		music.player.volume = newVolume;
 		setVolume(newVolume);
 	}
 

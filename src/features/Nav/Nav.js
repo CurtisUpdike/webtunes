@@ -3,9 +3,11 @@ import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import fetchAll from '../../utils/fetchAll';
 import styles from './Nav.module.scss';
+import useAuth from '../../hooks/useAuth';
 
-function Nav({ isAuthorized }) {
+function Nav() {
 	const music = window.MusicKit.getInstance();
+	const [isAuthorized] = useAuth();
 	const [userPlaylists, setUserPlaylists] = useState([]);
 
 	useEffect(() => {
@@ -39,9 +41,7 @@ function Nav({ isAuthorized }) {
 				</NavLink>
 				<div className={styles.list}>
 					{/* <h2 className={styles.heading}>Your Library</h2> */}
-					<NavLink to="/library/songs">Songs</NavLink>
-					{/* <NavLink to="/library/albums">Albums</NavLink> */}
-					{/* <NavLink to="/library/artists">Artists</NavLink> */}
+					{/* <NavLink to="/library/songs">Songs</NavLink> */}
 
 					{userPlaylists && [
 						<h2 className={styles.heading} key="header">

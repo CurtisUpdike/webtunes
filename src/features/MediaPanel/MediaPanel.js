@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import Artwork from '../../components/Artwork/Artwork';
+import Artwork from '../../components/Artwork';
 import IconButton from '../../components/common/IconButton';
 import styles from './MediaPanel.module.css';
 
