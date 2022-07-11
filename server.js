@@ -11,5 +11,5 @@ app.get('/.netlify/functions/getDeveloperToken', async (req, res) => {
 	res.send(body);
 });
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 8888;
 app.listen(port);

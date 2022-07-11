@@ -2,7 +2,7 @@ import React, { Component, createContext } from 'react';
 
 export const MusicKitContext = createContext({});
 
-const PATH_TO_API = '/.netlify/functions/getDeveloperToken';
+const PATH_TO_API = '/api/token';
 
 class MusicKitProvider extends Component {
 	constructor(props) {
@@ -76,7 +76,8 @@ const ErrorMessage = () => (
 			display: 'flex',
 			justifyContent: 'center',
 			marginTop: '40vh',
-		}}>
+		}}
+	>
 		There was an error loading the MusicKit library. Please try again another
 		time.
 	</h1>

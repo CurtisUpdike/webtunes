@@ -3,7 +3,7 @@ import MusicKitProvider from './providers/MusicKitProvider';
 import TopBar from './features/TopBar';
 import Nav from './features/Nav';
 import Routes from './pages/Routes';
-import Player from './components/Player';
+import Player from './features/Player';
 import styles from './App.module.css';
 
 const App = () => (
