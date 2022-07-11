@@ -1,50 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
-import MusicKitProvider, {
-	MusicKitContext,
-} from './providers/MusicKitProvider';
+import React from 'react';
+import MusicKitProvider from './providers/MusicKitProvider';
 import TopBar from './features/TopBar';
-import Nav from './components/Nav';
+import Nav from './features/Nav';
 import Routes from './pages/Routes';
 import Player from './components/Player';
 import styles from './App.module.css';
 
 const App = () => (
-	<div>
+	<div className={styles.app}>
 		<MusicKitProvider>
-			<Auth>
-				{(isAuthorized) => (
-					<div className={styles.app}>
-						<header className={styles.header}>
-							<TopBar />
-						</header>
-						<Nav isAuthorized={isAuthorized} />
-						<Player />
-						<main className={styles.main}>
-							<Routes isAuthorized={isAuthorized} />
-						</main>
-					</div>
-				)}
-			</Auth>
+			<header className={styles.header}>
+				<TopBar />
+			</header>
+			<Nav />
+			<Player />
+			<main className={styles.main}>
+				<Routes />
+			</main>
 		</MusicKitProvider>
 	</div>
 );
-
-const Auth = (props) => {
-	const mk = useContext(MusicKitContext);
-	const [isAuthorized, setIsAuthorized] = useState(mk.isAuthorized);
-
-	useEffect(function () {
-		function handleChange() {
-			setIsAuthorized(mk.isAuthorized);
-		}
-
-		mk.addEventListener('authorizationStatusDidChange', handleChange);
-		return function () {
-			mk.removeEventListener('authorizationStatusDidChange', handleChange);
-		};
-	});
-
-	return props.children(isAuthorized);
-};
 
 export default App;

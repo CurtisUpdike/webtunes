@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './PlaybackProgress.module.css';
-import MK from '../../../services/music-kit';
 import formatMediaTime from '../../../utils/formatMediaTime';
 import ProgressBar from '../ProgressBar';
 
 function PlaybackProgress() {
+	const music = window.MusicKit.getInstance();
 	let [current, duration, progress] = usePlaybackProgress();
 
 	function seekToSelection(percentSelected) {
-		MK.player.seekToTime(duration * percentSelected);
+		music.player.seekToTime(duration * percentSelected);
 	}
 
 	return (
@@ -21,27 +21,31 @@ function PlaybackProgress() {
 }
 
 function usePlaybackProgress() {
-	let [time, setTime] = useState(MK.player.currentPlaybackTime || 0);
+	const music = window.MusicKit.getInstance();
+	let [time, setTime] = useState(music.player.currentPlaybackTime || 0);
 	let [duration, setDuration] = useState(
-		MK.player.currentPlaybackDuration || 0
+		music.player.currentPlaybackDuration || 0
 	);
 	let progress = (time / duration) * 100 || 0;
 
 	useEffect(() => {
 		function handleTimeChange() {
-			setTime(MK.player.currentPlaybackTime);
+			setTime(music.player.currentPlaybackTime);
 		}
 		function handleDurationChange() {
-			setDuration(MK.player.currentPlaybackDuration);
+			setDuration(music.player.currentPlaybackDuration);
 		}
-		MK.player.addEventListener('playbackTimeDidChange', handleTimeChange);
-		MK.player.addEventListener(
+		music.player.addEventListener('playbackTimeDidChange', handleTimeChange);
+		music.player.addEventListener(
 			'playbackDurationDidChange',
 			handleDurationChange
 		);
 		return function cleanup() {
-			MK.player.removeEventListener('playbackTimeDidChange', handleTimeChange);
-			MK.player.removeEventListener(
+			music.player.removeEventListener(
+				'playbackTimeDidChange',
+				handleTimeChange
+			);
+			music.player.removeEventListener(
 				'playbackDurationDidChange',
 				handleDurationChange
 			);

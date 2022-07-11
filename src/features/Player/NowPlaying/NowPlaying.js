@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from '@reach/router';
 import formatArtworkURL from '../../../utils/formatArtworkURL';
-import MK from '../../../services/music-kit';
 import styles from './NowPlaying.module.scss';
 
 function NowPlaying() {
@@ -19,7 +18,9 @@ function NowPlaying() {
 					/>
 				</div>
 				<div className={styles.info}>
-					<Link to={mediaItem.containerURL} className={styles.title}>{mediaItem.title}</Link>
+					<Link to={mediaItem.containerURL} className={styles.title}>
+						{mediaItem.title}
+					</Link>
 					<p className={styles.artist}>{mediaItem.artistName}</p>
 				</div>
 			</div>
@@ -28,6 +29,7 @@ function NowPlaying() {
 }
 
 function useNowPlayingItem() {
+	const music = window.MusicKit.getInstance();
 	let [mediaItem, setMediaItem] = useState(null);
 
 	useEffect(function () {
@@ -38,17 +40,20 @@ function useNowPlayingItem() {
 					artwork,
 					albumName,
 					artistName,
-					container: {
-						name,
-						id
-					}
-				}
+					container: { name, id },
+				},
 			} = event;
-			setMediaItem({ title, artwork, albumName, artistName, containerURL: `${name}/${id}` });
+			setMediaItem({
+				title,
+				artwork,
+				albumName,
+				artistName,
+				containerURL: `${name}/${id}`,
+			});
 		}
-		MK.player.addEventListener('mediaItemDidChange', handleChange);
+		music.player.addEventListener('mediaItemDidChange', handleChange);
 		return function cleanup() {
-			MK.player.removeEventListener('mediaItemDidChange', handleChange);
+			music.player.removeEventListener('mediaItemDidChange', handleChange);
 		};
 	});
 

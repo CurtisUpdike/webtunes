@@ -45,7 +45,6 @@ function Tracklist({ songs }) {
 }
 
 function Track({ song }) {
-	console.log(song);
 	let {
 		attributes: {
 			name: title,
