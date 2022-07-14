@@ -27,10 +27,6 @@ function Nav() {
 	return (
 		isAuthorized && (
 			<nav className={styles.nav}>
-				<Link to="/" className={styles.logo}>
-					<Icon icon="record-vinyl" />
-					<span>Webtunes</span>
-				</Link>
 				<NavLink to="/" className={styles.icon}>
 					<Icon icon="home" />
 					<span>Home</span>
