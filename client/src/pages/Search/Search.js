@@ -23,10 +23,6 @@ function Search({ query }) {
 	if (error) return <Error>{error}</Error>;
 	if (loading) return <Loading />;
 
-	if (searchResults) {
-		console.log(searchResults);
-	}
-
 	return (
 		<div>
 			<h4>

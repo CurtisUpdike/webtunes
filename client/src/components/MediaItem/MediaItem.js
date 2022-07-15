@@ -6,13 +6,14 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function MediaItem({ attributes, size }) {
 	let music = window.MusicKit.getInstance();
-	let {
-		artwork,
-		name,
-		playParams: { kind, id },
-		artistName,
-		curatorName,
-	} = attributes;
+	let { artwork, name, playParams, artistName, curatorName } = attributes;
+
+	if (!(artwork && name && playParams && (artistName || curatorName))) {
+		return null;
+	}
+
+	let { kind, id } = playParams;
+	if (!kind || !id) return null;
 
 	function play() {
 		music
