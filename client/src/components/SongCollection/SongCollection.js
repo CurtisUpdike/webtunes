@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatMediaTime } from '../../utils/utils';
-import Artwork from '../Artwork/Artwork';
+import Artwork from '../Artwork';
 import styles from './SongCollection.module.css';
 import PlayButton from '../PlayButton/PlayButton';
 

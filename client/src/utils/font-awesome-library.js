@@ -14,12 +14,10 @@ import {
 	faSpinner,
 	faChevronLeft,
 	faChevronRight,
+	faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 
-import {
-	faPlayCircle,
-	faClock
-} from '@fortawesome/free-regular-svg-icons';
+import { faPlayCircle, faClock } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
 	faPlay,
@@ -37,5 +35,6 @@ library.add(
 	faChevronLeft,
 	faChevronRight,
 	faPlayCircle,
-	faClock
+	faClock,
+	faSearch
 );

@@ -7,6 +7,7 @@ import Album from './Album';
 import Playlist from './Playlist';
 import Artist from './Artist';
 import Song from './Song';
+import Search from './Search';
 import NotFound from '../components/NotFound';
 
 function Routes() {
@@ -22,7 +23,7 @@ function Routes() {
 			) : (
 				<Browse path="/" />
 			)}
-			{/* <Search path="search/:query" /> */}
+			<Search path="search/:query" />
 			<Album path="album/:id" />
 			<Artist path="artist/:id" />
 			<Playlist path="playlist/:id" />
