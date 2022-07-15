@@ -13,7 +13,10 @@ function TopBar() {
 	return (
 		<div
 			className={styles.container}
-			style={{ paddingLeft: isAuthorized ? '2rem' : '232px' }}
+			style={{
+				paddingLeft: isAuthorized ? '2rem' : '200px',
+				backgroundColor: isAuthorized ? '' : 'black',
+			}}
 		>
 			<div className={styles.logoContainer}>
 				<Link to="/" className={styles.logo}>
@@ -22,6 +25,20 @@ function TopBar() {
 				</Link>
 			</div>
 			<Search />
+			{!isAuthorized && (
+				<p className={styles.warning}>
+					Playback is limited to 30 seconds.{' '}
+					<button onClick={login}>Log in</button> or{' '}
+					<a
+						href="https://www.apple.com/apple-music/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Sign up
+					</a>{' '}
+					for the full experience.
+				</p>
+			)}
 			<div>
 				{isAuthorized ? (
 					<button type="button" className={styles.btn} onClick={logout}>

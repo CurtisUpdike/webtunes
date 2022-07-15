@@ -33,6 +33,23 @@
 	width: 1.125em !important;
 }
 
+.warning {
+	font-size: 0.875rem;
+	padding: 0 1rem;
+}
+
+.warning a,
+.warning button {
+	color: var(--color-brand-primary);
+	text-decoration: none;
+}
+
+.warning a:hover,
+.warning button:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .btn {
 	color: #fff;
 	background-color: var(--color-brand-primary);
