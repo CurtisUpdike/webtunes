@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatMediaTime } from '../../utils/utils';
 import Artwork from '../Artwork';
-import PlayButton from '../PlayButton/PlayButton';
+import PlayButton from '../PlayButton';
 import styles from './PlaylistTracklist.module.css';
 
 function PlaylistTracklist({ tracks }) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Volume.module.css';
-import IconButton from '../../../components/common/IconButton';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import ProgressBar from '../ProgressBar';
 
 function Volume() {
@@ -27,11 +27,9 @@ function Volume() {
 
 	return (
 		<div className={styles.container}>
-			<IconButton
-				className={styles.mute}
-				icon={isMuted ? 'volume-mute' : 'volume-up'}
-				onClick={toggleMute}
-			/>
+			<button type="button" className={styles.mute} onClick={toggleMute}>
+				<Icon icon={isMuted ? 'volume-mute' : 'volume-up'} />
+			</button>
 			<ProgressBar onSelect={setVolumeAtSelection} progress={volumeDisplay} />
 		</div>
 	);

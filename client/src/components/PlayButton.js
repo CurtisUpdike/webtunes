@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton from '../../components/common/IconButton';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 function PlayButton({ id, kind, ...props }) {
 	function play() {
@@ -11,7 +11,9 @@ function PlayButton({ id, kind, ...props }) {
 	}
 
 	return (
-		<IconButton icon={['fa', 'play']} size="3x" onClick={play} {...props} />
+		<button type="button" onClick={play} {...props}>
+			<Icon icon={['fa', 'play']} />
+		</button>
 	);
 }
 

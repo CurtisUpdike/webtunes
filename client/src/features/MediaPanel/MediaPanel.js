@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import Artwork from '../../components/Artwork';
-import IconButton from '../../components/common/IconButton';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import styles from './MediaPanel.module.css';
 
 const MediaPanel = ({
@@ -57,9 +57,10 @@ const MediaPanel = ({
 				</p>
 			)}
 
-			<IconButton icon="play" className={styles.play} onClick={play}>
+			<button type="button" className={styles.play} onClick={play}>
+				<Icon icon="play" />
 				Play
-			</IconButton>
+			</button>
 		</div>
 	</div>
 );
