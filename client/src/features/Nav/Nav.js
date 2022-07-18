@@ -3,15 +3,13 @@ import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import fetchAll from '../../utils/fetchAll';
 import styles from './Nav.module.scss';
-import useAuth from '../../hooks/useAuth';
 
-function Nav() {
-	const music = window.MusicKit.getInstance();
-	const [isAuthorized] = useAuth();
+function Nav({ isAuthorized }) {
 	const [userPlaylists, setUserPlaylists] = useState([]);
 
 	useEffect(() => {
 		async function getPlaylists() {
+			const music = window.MusicKit.getInstance();
 			const fetcher = music.api.library.playlists.bind(music.api.library);
 			const data = await fetchAll(fetcher);
 			setUserPlaylists(data);
@@ -22,7 +20,7 @@ function Nav() {
 		} else {
 			setUserPlaylists(null);
 		}
-	}, [isAuthorized, music]);
+	}, [isAuthorized]);
 
 	return (
 		isAuthorized && (

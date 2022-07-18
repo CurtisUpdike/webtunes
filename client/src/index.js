@@ -1,10 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './utils/font-awesome-library';
 import './index.css';
+import Error from './components/Error';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = document.getElementById('root');
+
+fetch('/api/token')
+	.then((res) => res.json())
+	.then(({ developerToken }) => {
+		window.MusicKit.configure({
+			developerToken,
+			app: {
+				name: 'Webtunes',
+				build: '1.0',
+			},
+		});
+	})
+	.then(() => render(<App />, root))
+	.catch((error) => {
+		render(
+			<Error>
+				There was an error loading the MusicKit library. Please try again
+				another time.
+			</Error>,
+			root
+		);
+	});
 
 serviceWorker.unregister();

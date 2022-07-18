@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import useAuth from '../../hooks/useAuth';
 import styles from './TopBar.module.css';
 import Search from './Search';
 
-function TopBar() {
-	const [isAuthorized, setIsAuthorized] = useAuth();
+function TopBar({ isAuthorized, setIsAuthorized }) {
 	const login = () => setIsAuthorized(true);
 	const logout = () => setIsAuthorized(false);
 
