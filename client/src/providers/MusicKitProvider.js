@@ -1,8 +1,8 @@
 import React, { Component, createContext } from 'react';
+import Error from '../components/Error';
+import Loading from '../components/Loading';
 
 export const MusicKitContext = createContext({});
-
-const PATH_TO_API = '/api/token';
 
 class MusicKitProvider extends Component {
 	constructor(props) {
@@ -13,53 +13,34 @@ class MusicKitProvider extends Component {
 		};
 	}
 
-	setStore(data) {
-		localStorage.setItem('devToken', JSON.stringify(data));
-	}
-
-	getStore() {
-		return JSON.parse(localStorage.getItem('devToken')) || {};
-	}
-
-	async configure() {
-		try {
-			let { developerToken, expiration } = this.getStore();
-			const isValidToken = expiration - Date.now() > 0;
-			if (!isValidToken) {
-				const response = await fetch(PATH_TO_API);
-				const data = await response.json();
-				this.setStore(data);
-				developerToken = data.developerToken;
-			}
-			window.MusicKit.configure({
-				developerToken: developerToken,
-				app: {
-					name: 'Webtunes',
-					build: '1.0',
-				},
-			});
-			this.setState({ loading: false });
-		} catch (error) {
-			console.error(error);
-			this.setState({ error });
-		}
-	}
-
 	componentDidMount() {
-		if (window.MusicKit) {
-			this.configure();
-		} else {
-			document.addEventListener('musickitloaded', this.configure);
-		}
+		fetch('/api/token')
+			.then((res) => res.json())
+			.then(({ developerToken }) => {
+				window.MusicKit.configure({
+					developerToken,
+					app: {
+						name: 'Webtunes',
+						build: '1.0',
+					},
+				});
+			})
+			.then(() => this.setState({ loading: false }))
+			.catch((error) => this.setState({ error }));
 	}
 
 	render() {
-		if (this.state.loading) {
-			return null;
+		if (this.state.error) {
+			return (
+				<Error>
+					There was an error loading the MusicKit library. Please try again
+					another time.
+				</Error>
+			);
 		}
 
-		if (this.state.error) {
-			return ErrorMessage;
+		if (this.state.loading) {
+			return <Loading />;
 		}
 
 		return (
@@ -69,18 +50,5 @@ class MusicKitProvider extends Component {
 		);
 	}
 }
-
-const ErrorMessage = () => (
-	<h1
-		style={{
-			display: 'flex',
-			justifyContent: 'center',
-			marginTop: '40vh',
-		}}
-	>
-		There was an error loading the MusicKit library. Please try again another
-		time.
-	</h1>
-);
 
 export default MusicKitProvider;
